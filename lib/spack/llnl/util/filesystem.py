@@ -289,6 +289,11 @@ def ancestor(dir, n=1):
     parent = os.path.abspath(dir)
     for i in range(n):
         parent = os.path.dirname(parent)
+        
+    # personal modification dsk262: make it work with /stor/apps and /apps
+    if parent.startswith('/stor/'):
+        parent = parent[5:]
+
     return parent
 
 

@@ -69,4 +69,9 @@ def canonicalize_path(path):
     path = substitute_config_variables(path)
     path = os.path.expanduser(path)
     path = os.path.abspath(path)
+    
+    # personal modification dsk262: make it work with /stor/apps and /apps
+    if path.startswith('/stor/'):
+        path = path[5:]
+
     return path
