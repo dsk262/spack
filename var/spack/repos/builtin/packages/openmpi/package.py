@@ -161,11 +161,12 @@ class Openmpi(AutotoolsPackage):
         spec = self.spec
 
         config_args = [
+            'LIBS=-ldl',
             '--enable-shared',
             '--enable-static',
             '--enable-mpi-cxx',
             # Schedulers
-            '--with-tm' if '+tm' in spec else '--without-tm',
+            '--with-tm=/opt/pbs/default' if '+tm' in spec else '--without-tm',
             '--with-slurm' if '+slurm' in spec else '--without-slurm',
             # Fabrics
             '--with-psm' if '+psm' in spec else '--without-psm',
